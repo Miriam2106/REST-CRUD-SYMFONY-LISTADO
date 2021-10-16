@@ -1,0 +1,135 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Product lines
+{% endblock %}
+{% block stylesheets %} {% endblock %}
+{% block body %} 
+    <div class="modal fade" id="modalProductl"  style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-header text-white" style="background-color: #8E1451;">
+                            MODIFY
+                        </div>
+                        <div class="card-body text-dark">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group text-left">
+                                        <label>Product line:<i style="color: red">*</i></label>
+                                        <input type="text" id="productL1" class="form-control" required readonly>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group text-left">
+                                        <label>Text description:<i style="color: red">*</i></label>
+                                        <input type="text" id="txtDesc1" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group text-left">
+                                        <label>Html description:<i style="color: red">*</i></label>
+                                        <input type="text" id="htmlDesc1" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group text-left">
+                                        <label>Image:</label>
+                                        <input type="text" id="image1" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="button"class="btn btn-outline-success">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                <div class="card-header text-white" style="background-color: #8E1451;">
+                    PRODUCT LINES
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover table-light">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="text-center">Modify</th>
+                            <th scope="col" class="text-center">Delete</th>
+                            <th scope="col">Product line</th>
+                            <th scope="col">Text description</th>
+                            <th scope="col">HTML description</th>
+                            <th scope="col">Image</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for productl in lista %}
+                                <tr>
+                                    <td>
+                                        <button title="Modify" type="button" data-bs-toggle="modal" data-bs-target="#modalProductl" class="btn btn-outline-warning"><i class="far fa-edit"></i></button>
+                                    </td>
+                                    <td>
+                                        <button title="Delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                                    </td>
+                                    <td>{{productl.productline}}</td>
+                                    <td>{{productl.textdescription}}</td>
+                                    <td>{{productl.htmldescription}}</td>
+                                    <td>
+                                        {% if productl.image == null%}
+                                        Sin imagen
+                                        {% else %}
+                                        {{productl.image}}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="m-0 justify-content-center row align-items-center">
+            <section id="createProductLine">
+                <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-header text-white" style="background-color: #8E1451;">
+                        REGISTRATION
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product line:<i style="color: red">*</i></label>
+                                    <input type="text" id="productL" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Text description:<i style="color: red">*</i></label>
+                                    <input type="text" id="txtDesc" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Html description:<i style="color: red">*</i></label>
+                                    <input type="text" id="htmlDesc" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Image:</label>
+                                    <input type="number" id="image" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="button"class="btn btn-outline-success">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Order details
+{% endblock %}
+{% block stylesheets %} {% endblock %}
+{% block body %} 
+    <div class="modal fade" id="modalOrderD"  style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-header text-white" style="background-color: #8E1451;">
+                            MODIFY
+                        </div>
+                        <div class="card-body text-dark">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group text-left">
+                                        <label>Order number:<i style="color: red">*</i></label>
+                                        <input type="text" id="orderN1" class="form-control" required readonly>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group text-left">
+                                        <label>Product code:<i style="color: red">*</i></label>
+                                        <input type="text" id="productC1" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group text-left">
+                                        <label>Quantity ordered:<i style="color: red">*</i></label>
+                                        <input type="text" id="quantityO1" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group text-left">
+                                        <label>Price each:<i style="color: red">*</i></label>
+                                        <input type="text" id="price1" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group text-left">
+                                        <label>Order line number:<i style="color: red">*</i></label>
+                                        <input type="text" id="orderLineN1" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="button"class="btn btn-outline-success">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                <div class="card-header text-white" style="background-color: #8E1451;">
+                    ORDER DETAILS
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover table-light">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="text-center">Modify</th>
+                            <th scope="col" class="text-center">Delete</th>
+                            <th scope="col">Order number</th>
+                            <th scope="col">Product code</th>
+                            <th scope="col">Quantity ordered</th>
+                            <th scope="col">Price each</th>
+                            <th scope="col">Order line number</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for orderd in lista %}
+                                <tr>
+                                    <td>
+                                        <button title="Modify" type="button" data-bs-toggle="modal" data-bs-target="#modalOrderD" class="btn btn-outline-warning"><i class="far fa-edit"></i></button>
+                                    </td>
+                                    <td>
+                                        <button title="Delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                                    </td>
+                                    <td>{{orderd.ordernumber}}</td>
+                                    <td>{{orderd.productcode}}</td>
+                                    <td>{{orderd.quantityordered}}</td>
+                                    <td>{{orderd.priceeach}}</td>
+                                    <td>{{orderd.orderlinenumber}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="m-0 justify-content-center row align-items-center">
+            <section id="createOrderDetail">
+                <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-header text-white" style="background-color: #8E1451;">
+                        REGISTRATION
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group text-left">
+                                        <label>Order number:<i style="color: red">*</i></label>
+                                        <input type="text" id="orderN" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group text-left">
+                                        <label>Product code:<i style="color: red">*</i></label>
+                                        <input type="text" id="productC" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group text-left">
+                                        <label>Quantity ordered:<i style="color: red">*</i></label>
+                                        <input type="text" id="quantityO" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group text-left">
+                                        <label>Price each:<i style="color: red">*</i></label>
+                                        <input type="text" id="price" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group text-left">
+                                        <label>Order line number:<i style="color: red">*</i></label>
+                                        <input type="text" id="orderLineN" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-12">
+                            <button type="button"class="btn btn-outline-success">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

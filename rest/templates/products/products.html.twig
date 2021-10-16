@@ -1,0 +1,198 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Products
+{% endblock %}
+{% block stylesheets %} {% endblock %}
+{% block body %} 
+    <div class="modal fade"  id="modalProduct" style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-header text-white" style="background-color: #8E1451;">
+                        MODIFY
+                    </div>
+                    <div class="card-body text-dark">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product code:<i style="color: red">*</i></label>
+                                    <input type="text" id="productCode1"class="form-control" required readonly>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product name:<i style="color: red">*</i></label>
+                                    <input type="text" id="productName1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product line:<i style="color: red">*</i></label>
+                                    <input type="text" id="productLine1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product scale:<i style="color: red">*</i></label>
+                                    <input type="text" id="productScale1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product vendor:<i style="color: red">*</i></label>
+                                    <input type="text" id="productVendor1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product description:<i style="color: red">*</i></label>
+                                    <input type="text" id="productDescription1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group text-left">
+                                    <label>Quantity:<i style="color: red">*</i></label>
+                                    <input type="number" id="quantity1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group text-left">
+                                    <label>Buy price:<i style="color: red">*</i></label>
+                                    <input type="number" id="buyPrice1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group text-left">
+                                    <label>MSRP:<i style="color: red">*</i></label>
+                                    <input type="number" id="msrp1" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="button"class="btn btn-outline-success">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                <div class="card-header text-white" style="background-color: #8E1451;">
+                    PRODUCTS
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover table-light">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="text-center">Modify</th>
+                            <th scope="col" class="text-center">Delete</th>
+                            <th scope="col">Product code</th>
+                            <th scope="col">Product name</th>
+                            <th scope="col">Product line</th>
+                            <th scope="col">Product scale</th>
+                            <th scope="col">Product vendor</th>
+                            <th scope="col">Product description</th>
+                            <th scope="col">Quantity in stock</th>
+                            <th scope="col">Buy price</th>
+                            <th scope="col">MSRP</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for products in lista %}
+                                <tr>
+                                    <td>
+                                        <button title="Modify" type="button" data-bs-toggle="modal" data-bs-target="#modalProduct" class="btn btn-outline-warning"><i class="far fa-edit"></i></button>
+                                    </td>
+                                    <td>
+                                        <button title="Delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                                    </td>
+                                    <td>{{products.productcode}}</td>
+                                    <td>{{products.productname}}</td>
+                                    <td>{{products.productline}}</td>
+                                    <td>{{products.productscale}}</td>
+                                    <td>{{products.productvendor}}</td>
+                                    <td>{{products.productdescription}}</td>
+                                    <td>{{products.quantityinstock}}</td>
+                                    <td>{{products.buyprice}}</td>
+                                    <td>{{products.msrp}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="m-0 justify-content-center row align-items-center">
+            <section id="createProduct">
+                <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-header text-white" style="background-color: #8E1451;">
+                        REGISTRATION
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product code:<i style="color: red">*</i></label>
+                                    <input type="text" id="productCode" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product name:<i style="color: red">*</i></label>
+                                    <input type="text" id="productName" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product line:<i style="color: red">*</i></label>
+                                    <input type="text" id="productLine" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product scale:<i style="color: red">*</i></label>
+                                    <input type="text" id="productScale" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product vendor:<i style="color: red">*</i></label>
+                                    <input type="text" id="productVendor" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Product description:<i style="color: red">*</i></label>
+                                    <input type="text" id="productDescription" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group text-left">
+                                    <label>Quantity:<i style="color: red">*</i></label>
+                                    <input type="text" id="quantity" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group text-left">
+                                    <label>Buy price:<i style="color: red">*</i></label>
+                                    <input type="text" id="buyPrice" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group text-left">
+                                    <label>MSRP:<i style="color: red">*</i></label>
+                                    <input type="text" id="msrp" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="button"class="btn btn-outline-success">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,184 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Employees
+{% endblock %}
+{% block stylesheets %} {% endblock %}
+{% block body %} 
+    <div class="modal fade" id="modalEmployee" style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-header text-white" style="background-color: #8E1451;">
+                                MODIFY
+                            </div>
+                            <div class="card-body text-dark">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Employee number:<i style="color: red">*</i></label>
+                                            <input type="text" id="empNumber1" class="form-control" required readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Extension:</label>
+                                            <input type="text" id="extension1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Lastname:<i style="color: red">*</i></label>
+                                            <input type="text" id="lastname1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Firstname:<i style="color: red">*</i></label>
+                                            <input type="text" id="firstname1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Email:<i style="color: red">*</i></label>
+                                            <input type="text" id="emai1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Office code:</label>
+                                            <input type="text" id="officeC1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Reports to:</label>
+                                            <input type="text" id="reportsTo1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Job title:<i style="color: red">*</i></label>
+                                            <input type="text" id="jobTitle1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="button"class="btn btn-outline-success">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div>
+                    <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-header text-white" style="background-color: #8E1451;">
+                            EMPLOYEES
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover table-light">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="text-center">Modify</th>
+                                    <th scope="col" class="text-center">Delete</th>
+                                    <th scope="col">Employee number</th>
+                                    <th scope="col">Lastname</th>
+                                    <th scope="col">Firstname</th>
+                                    <th scope="col">Extension</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Office code</th>
+                                    <th scope="col">Reports to</th>
+                                    <th scope="col">Job title</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for employees in lista %}
+                                        <tr>
+                                            <td>
+                                                <button title="Modify" type="button" data-bs-toggle="modal" data-bs-target="#modalEmployee" class="btn btn-outline-warning"><i class="far fa-edit"></i></button>
+                                            </td>
+                                            <td>
+                                                <button title="Delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                                            </td>
+                                            <td>{{employees.employeenumber}}</td>
+                                            <td>{{employees.lastname}}</td>
+                                            <td>{{employees.firstname}}</td>
+                                            <td>{{employees.extension}}</td>
+                                            <td>{{employees.email}}</td>
+                                            <td>{{employees.officecode}}</td>
+                                            <td>{{employees.reportsto}}</td>
+                                            <td>{{employees.jobtitle}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-0 justify-content-center row align-items-center">
+                    <section id="createOffice">
+                        <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-header text-white" style="background-color: #8E1451;">
+                                REGISTRATION
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Employee number:<i style="color: red">*</i></label>
+                                            <input type="text" id="empNumber1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Extension:</label>
+                                            <input type="text" id="extension1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Lastname:<i style="color: red">*</i></label>
+                                            <input type="text" id="lastname1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Firstname:<i style="color: red">*</i></label>
+                                            <input type="text" id="firstname1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Email:<i style="color: red">*</i></label>
+                                            <input type="text" id="emai1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Office code:</label>
+                                            <input type="text" id="officeC1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Reports to:</label>
+                                            <input type="text" id="reportsTo1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Job title:<i style="color: red">*</i></label>
+                                            <input type="text" id="jobTitle1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="button"class="btn btn-outline-success">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+{% endblock %}

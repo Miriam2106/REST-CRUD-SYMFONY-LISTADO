@@ -1,0 +1,178 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Orders
+{% endblock %}
+{% block stylesheets %} {% endblock %}
+{% block body %}
+    <div class="modal fade"  id="modalOrder" style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-header text-white" style="background-color: #8E1451;">
+                                MODIFY
+                            </div>
+                            <div class="card-body text-dark">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Order number:<i style="color: red">*</i></label>
+                                            <input type="text" id="ordernumber1" class="form-control" required readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Order date:<i style="color: red">*</i></label>
+                                            <input type="date" id="orderdate1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Required date:<i style="color: red">*</i></label>
+                                            <input type="date" id="reqdate1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Shipped date:</label>
+                                            <input type="date" id="shipdate1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>Status:<i style="color: red">*</i></label>
+                                            <input type="text" id="status1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>Customer number:<i style="color: red">*</i></label>
+                                            <input type="text" id="custNumber1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>Comments:</label>
+                                            <input type="text" id="comments1"class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="button"class="btn btn-outline-success">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div>
+                    <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-header text-white" style="background-color: #8E1451;">
+                            ORDERS
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover table-light">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="text-center">Modify</th>
+                                    <th scope="col" class="text-center">Delete</th>
+                                    <th scope="col">Order number</th>
+                                    <th scope="col">Order date</th>
+                                    <th scope="col">Required date</th>
+                                    <th scope="col">Shipped date</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Comments</th>
+                                    <th scope="col">Customer number</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for orders in lista %}
+                                        <tr>
+                                            <td>
+                                                <button title="Modify" type="button" data-bs-toggle="modal" data-bs-target="#modalOrder" class="btn btn-outline-warning"><i class="far fa-edit"></i></button>
+                                            </td>
+                                            <td>
+                                                <button title="Delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                                            </td>
+                                            <td>{{orders.ordernumber}}</td>
+                                            <td>{{orders.orderdate.format('Y/m/d')}}</td>
+                                            <td>{{orders.requireddate.format('Y/m/d')}}</td>
+                                            {% if orders.shippeddate == null%}
+                                                <td>No date</td>
+                                            {% else %}
+                                                <td>{{orders.shippeddate.format('Y/m/d')}}</td>
+                                            {% endif %}
+                                            <td>{{orders.status}}</td>
+                                            {% if orders.comments == null%}
+                                                <td>No comments</td>
+                                            {% else %}
+                                                <td>{{orders.comments}}</td>
+                                            {% endif %}
+                                            <td>{{orders.customernumber}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-0 justify-content-center row align-items-center">
+                    <section id="createOffice">
+                        <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-header text-white" style="background-color: #8E1451;">
+                                REGISTRATION
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Order number:<i style="color: red">*</i></label>
+                                            <input type="text" id="ordernumber" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Order date:<i style="color: red">*</i></label>
+                                            <input type="date" id="orderdate" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Required date:<i style="color: red">*</i></label>
+                                            <input type="date" id="reqdate" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Shipped date:</label>
+                                            <input type="date" id="shipdate" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>Status:<i style="color: red">*</i></label>
+                                            <input type="text" id="status" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>Customer number:<i style="color: red">*</i></label>
+                                            <input type="text" id="custNumber" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>Comments:</label>
+                                            <input type="text" id="comments" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-outline-success">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+{% endblock %}

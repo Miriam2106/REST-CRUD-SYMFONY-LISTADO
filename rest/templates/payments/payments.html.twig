@@ -1,0 +1,126 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Payments
+{% endblock %}
+{% block stylesheets %} {% endblock %}
+{% block body %} 
+    <div class="modal fade"  id="modalPayment" style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-header text-white" style="background-color: #8E1451;">
+                        MODIFY
+                    </div>
+                    <div class="card-body text-dark">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Customer number<i style="color: red">*</i></label>
+                                    <input type="text" id="customerN1"class="form-control" required readonly>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Check number:<i style="color: red">*</i></label>
+                                    <input type="text" id="chkNumber1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Payment date:<i style="color: red">*</i></label>
+                                    <input type="date" id="paymentDate1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Amount:<i style="color: red">*</i></label>
+                                    <input type="text" id="amount1" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="button"class="btn btn-outline-success">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+            <div class="card-header text-white" style="background-color: #8E1451;">
+                PAYMENTS
+            </div>
+            <div class="card-body table-responsive">
+                <table class="table table-hover table-light">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="text-center">Modify</th>
+                        <th scope="col" class="text-center">Delete</th>
+                        <th scope="col">Customer number</th>
+                        <th scope="col">Check number</th>
+                        <th scope="col">Payment date</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for payments in lista %}
+                            <tr>
+                                <td>
+                                    <button title="Modify" type="button" data-bs-toggle="modal" data-bs-target="#modalPayment" class="btn btn-outline-warning"><i class="far fa-edit"></i></button>
+                                </td>
+                                <td>
+                                    <button title="Delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                                </td>
+                                <td>{{payments.customernumber}}</td>
+                                <td>{{payments.checknumber}}</td>
+                                <td>{{payments.paymentdate.format('Y/m/d')}}</td>
+                                <td>{{payments.amount}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="m-0 justify-content-center row align-items-center">
+            <section id="createPayment">
+                <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-header text-white" style="background-color: #8E1451;">
+                        REGISTRATION
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Customer number<i style="color: red">*</i></label>
+                                    <input type="text" id="customerN" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Check number:<i style="color: red">*</i></label>
+                                    <input type="text" id="chkNumber" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Payment date:<i style="color: red">*</i></label>
+                                    <input type="date" id="paymentDate" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group text-left">
+                                    <label>Amount:<i style="color: red">*</i></label>
+                                    <input type="text" id="amount" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="button"class="btn btn-outline-success">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

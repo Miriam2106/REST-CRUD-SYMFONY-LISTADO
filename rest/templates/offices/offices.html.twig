@@ -1,0 +1,198 @@
+{% extends('base.html.twig') %}
+{% block title %}
+Offices
+{% endblock %}
+{% block stylesheets %} {% endblock %}
+{% block body %} 
+    <div class="modal fade"  id="modalOffice" style="color: white;" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-header text-white" style="background-color: #8E1451;">
+                                MODIFY
+                            </div>
+                            <div class="card-body text-dark">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Office code:<i style="color: red">*</i></label>
+                                            <input type="text" id="officeCode1" name="customerNumber" class="form-control" required readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Phone:<i style="color: red">*</i></label>
+                                            <input type="text" id="phoneOf1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Address line 1:<i style="color: red">*</i></label>
+                                            <input type="text" id="addressOf1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Address line 2:</label>
+                                            <input type="text" id="addressOf2" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>City:<i style="color: red">*</i></label>
+                                            <input type="text" id="cityOf1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>State:</label>
+                                            <input type="text" id="stateOf1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>Country:<i style="color: red">*</i></label>
+                                            <input type="text" id="countryOf1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Postal code:<i style="color: red">*</i></label>
+                                            <input type="text" id="postalCodeOf1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Territory:<i style="color: red">*</i></label>
+                                            <input type="text" id="territory1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="button"class="btn btn-outline-success">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div>
+                    <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-header text-white" style="background-color: #8E1451;">
+                            OFFICES
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover table-light">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="text-center">Modify</th>
+                                    <th scope="col" class="text-center">Delete</th>
+                                    <th scope="col">Office code</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Address line 1</th>
+                                    <th scope="col">Address line 2</th>
+                                    <th scope="col">State</th>
+                                    <th scope="col">Country</th>
+                                    <th scope="col">Postal code</th>
+                                    <th scope="col">Territory</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for offices in lista %}
+                                        <tr>
+                                            <td>
+                                                <button title="Modify" type="button" data-bs-toggle="modal" data-bs-target="#modalOffice" class="btn btn-outline-warning"><i class="far fa-edit"></i></button>
+                                            </td>
+                                            <td>
+                                                <button title="Delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                                            </td>
+                                            <td>{{offices.officecode}}</td>
+                                            <td>{{offices.city}}</td>
+                                            <td>{{offices.phone}}</td>
+                                            <td>{{offices.addressline1}}</td>
+                                            <td>{{offices.addressline2}}</td>
+                                            <td>{{offices.state}}</td>
+                                            <td>{{offices.country}}</td>
+                                            <td>{{offices.postalcode}}</td>
+                                            <td>{{offices.territory}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-0 justify-content-center row align-items-center">
+                    <section id="createOffice">
+                        <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                            <div class="card-header text-white" style="background-color: #8E1451;">
+                                REGISTRATION
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Office code:<i style="color: red">*</i></label>
+                                            <input type="text" id="officeCode" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Phone:<i style="color: red">*</i></label>
+                                            <input type="text" id="phoneOf" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Address line 1:<i style="color: red">*</i></label>
+                                            <input type="text" id="address1Of" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Address line 2:</label>
+                                            <input type="text" id="address2Of" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>City:<i style="color: red">*</i></label>
+                                            <input type="text" id="cityOf" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>State:</label>
+                                            <input type="text" id="stateOf" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group text-left">
+                                            <label>Country:<i style="color: red">*</i></label>
+                                            <input type="text" id="countryOf" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Postal code:<i style="color: red">*</i></label>
+                                            <input type="text" id="postalCodeOf" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group text-left">
+                                            <label>Territory:<i style="color: red">*</i></label>
+                                            <input type="text" id="territory" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="button"class="btn btn-outline-success">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+{% endblock %}
